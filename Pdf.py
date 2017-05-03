@@ -18,4 +18,4 @@ def htmltopdf(content,name):
         'no-outline': None
     }
 
-    pdfkit.from_string(content, name+'.pdf',options=options)
+    pdfkit.from_string(content, name+'.pdf',options=options)#generate the pdf file
