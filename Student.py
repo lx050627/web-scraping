@@ -3,7 +3,9 @@
 from prettytable import PrettyTable
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine, Table, Column, Integer, String, MetaData
+from sqlalchemy import create_engine, Column, String
+import threading
+from time import ctime
 
 
 # create the base class of obejct
@@ -28,6 +30,7 @@ class Student(Base):
         self.addr=addr
 
     def InsertDB(self):
+        print('thread %s is running...%s' % (threading.current_thread().name, ctime()))
         # initilize the connection to db
         engine = create_engine('mysql+pymysql://root:1995627@localhost:3306/miun')
         # create the table if it does not exist
@@ -42,7 +45,7 @@ class Student(Base):
         session.commit()
         # close session
         session.close()
-        print("Store student in DB finished")
+        print("Student Insert Done")
 
     def printInfo(self):#print the student's basic information in the form of table
         x = PrettyTable(

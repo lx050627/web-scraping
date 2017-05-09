@@ -1,7 +1,7 @@
 import pdfkit
 
 def htmltopdf(content,name):
-    options = {
+    myoptions = {
         'page-size': 'A4',
         'margin-top': '0.75in',
         'margin-right': '0.75in',
@@ -17,5 +17,5 @@ def htmltopdf(content,name):
         ],
         'no-outline': None
     }
-
-    pdfkit.from_string(content, name+'.pdf',options=options)#generate the pdf file
+    mycss = 'table.css'
+    pdfkit.from_string(content, name+'.pdf',options=myoptions,css=mycss)#generate the pdf file

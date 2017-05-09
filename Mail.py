@@ -65,11 +65,12 @@ def SendMail(receiver,to_addr,content,papers):
             msg.attach(mime)
 
     server = smtplib.SMTP(smtp_server, smtp_port)
-    server.starttls()#start tls connection
+    server.starttls()#start tls connection for security
     server.set_debuglevel(0)
     server.login(from_addr, password)#authenticate
     server.sendmail(from_addr, [to_addr], msg.as_string())#start sending mail
     server.quit()
+    print("Sending email finishes")
 
 
 
