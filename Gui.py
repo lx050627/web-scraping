@@ -44,12 +44,15 @@ class Application(Frame):
     def execute(self):#execute crawler program
         name = self.usernameInput.get()#get the username and password from input box
         pw = self.pwInput.get()
-        info=self.c.execute(name,pw)
-        self.profile=info['profile']
-        self.courses=info['courses']
-        self.grades=info['grades']
-        self.papers = info['papers']
-        self.htmlresult=self.show() #display the results in GUI and return the html from
+        if(name!="" and pw!=""):
+            info = self.c.execute(name, pw)
+            #print("INFo"+info)
+            if(info!={}):
+                self.profile = info['profile']
+                self.courses = info['courses']
+                self.grades = info['grades']
+                self.papers = info['papers']
+                self.htmlresult = self.show()  # display the results in GUI and return the html from
 
     def service(self):
         service = Tk()
